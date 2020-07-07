@@ -1,70 +1,79 @@
-## 题目地址
-
-https://leetcode-cn.com/problems/merge-two-sorted-lists
-
 ## 题目描述
 
 ```
-将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所节点组成的。 
+编写一个函数来查找字符串数组中的最长公共前缀。
 
-示例：
+如果不存在公共前缀，返回空字符串 ""。
 
-输入：1->2->4, 1->3->4
-输出：1->1->2->3->4->4
+示例 1:
+
+输入: ["flower","flow","flight"]
+输出: "fl"
+示例 2:
+
+输入: ["dog","racecar","car"]
+输出: ""
+解释: 输入不存在公共前缀。
+说明:
+
+所有输入只包含小写字母 a-z 。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/longest-common-prefix
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 ```
 
-## 前置知识
+## 我的开始思路
 
-- 递归
-- 链表
-
-## 思路
-
-使用递归来解题，将两个链表头部较小的一个与剩下的元素合并，并返回排好序的链表头，当两条链表中的一条为空时终止递归。
-
-## 关键点
-
-- 掌握链表数据结构
-- 考虑边界情况 2
+写一个比较两个字符串的最长公共前缀函数，然后遍历字符串数组，不断把前一个结果和当前字符串传入比较两个字符串的函数。
 
 ## 代码
 
-- 语言支持：JS
+- 语言支持：C#
 
-```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */
-const mergeTwoLists = function (l1, l2) {
-  if (l1 === null) {
-    return l2;
-  }
-  if (l2 === null) {
-    return l1;
-  }
-  if (l1.val < l2.val) {
-    l1.next = mergeTwoLists(l1.next, l2);
-    return l1;
-  } else {
-    l2.next = mergeTwoLists(l1, l2.next);
-    return l2;
-  }
-};
+```C#
+        private string LongestCommonPrefix1(string[] strs)
+        {
+            string tmpStr;
+
+            if (strs.Length == 0) return "";
+            tmpStr = strs[0];
+
+            foreach (var item in strs)
+            {
+                tmpStr = CommomPrefixTwo(tmpStr, item);
+                if (tmpStr == "") return "";
+
+            }
+
+            return tmpStr;
+        }
+
+        private string CommomPrefixTwo(string str1, string str2)
+        {
+            char[] tmpStr1;
+            char[] tmpStr2;
+            int tmpMin;
+
+            string tmpStr = "";
+
+            tmpStr1 = str1.ToCharArray();
+            tmpStr2 = str2.ToCharArray();
+
+            tmpMin = Math.Min(tmpStr1.Length, tmpStr2.Length) - 1;
+
+            for (int i = 0; i <= tmpMin; i++)
+            {
+                if (tmpStr1[i] == tmpStr2[i])
+                {
+                    tmpStr += tmpStr1[i];
+                }
+                else
+                {
+                    return tmpStr;
+                }
+            }
+            return tmpStr;
+        }
 ```
-
-**_复杂度分析_**
-
-M、N 是两条链表 l1、l2 的长度
-
-- 时间复杂度：O(M+N)
-- 空间复杂度：O(M+N)
