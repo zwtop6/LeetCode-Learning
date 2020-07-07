@@ -1,0 +1,43 @@
+private string LongestCommonPrefix1(string[] strs)
+        {
+            string tmpStr;
+
+            if (strs.Length == 0) return "";
+            tmpStr = strs[0];
+
+            foreach (var item in strs)
+            {
+                tmpStr = CommomPrefixTwo(tmpStr, item);
+                if (tmpStr == "") return "";
+
+            }
+
+            return tmpStr;
+        }
+
+        private string CommomPrefixTwo(string str1, string str2)
+        {
+            char[] tmpStr1;
+            char[] tmpStr2;
+            int tmpMin;
+
+            string tmpStr = "";
+
+            tmpStr1 = str1.ToCharArray();
+            tmpStr2 = str2.ToCharArray();
+
+            tmpMin = Math.Min(tmpStr1.Length, tmpStr2.Length) - 1;
+
+            for (int i = 0; i <= tmpMin; i++)
+            {
+                if (tmpStr1[i] == tmpStr2[i])
+                {
+                    tmpStr += tmpStr1[i];
+                }
+                else
+                {
+                    return tmpStr;
+                }
+            }
+            return tmpStr;
+        }
