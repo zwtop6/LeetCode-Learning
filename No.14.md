@@ -37,14 +37,13 @@
         {
             string tmpStr;
 
-            if (strs.Length == 0) return "";
-            tmpStr = strs[0];
+            if (strs.Length == 0) return "";            
+            tmpStr = strs[0];                                      
 
             foreach (var item in strs)
             {
-                tmpStr = CommomPrefixTwo(tmpStr, item);
-                if (tmpStr == "") return "";
-
+                tmpStr = CommomPrefixTwo(tmpStr, item);         //调用比较两个字符串的最长公共前缀函数
+                if (tmpStr == "") return "";            //当结果为空时，不需要继续遍历
             }
 
             return tmpStr;
@@ -58,10 +57,10 @@
 
             string tmpStr = "";
 
-            tmpStr1 = str1.ToCharArray();
-            tmpStr2 = str2.ToCharArray();
+            tmpStr1 = str1.ToCharArray();       //转化字符串为字符数组
+            tmpStr2 = str2.ToCharArray();       //转化字符串为字符数组              
 
-            tmpMin = Math.Min(tmpStr1.Length, tmpStr2.Length) - 1;
+            tmpMin = Math.Min(tmpStr1.Length, tmpStr2.Length) - 1;      //得到两字符数组的最小长度-1
 
             for (int i = 0; i <= tmpMin; i++)
             {
@@ -77,3 +76,39 @@
             return tmpStr;
         }
 ```
+
+## 学习他人的思路
+直接把所有的字符串比较，用try来避免数组超出索引范围
+
+## 代码
+        public string LongestCommonPrefix2(string[] strs)
+        {
+            int curpos = 0;
+            int l = strs.Length;
+            string res;
+            if (l == 0) return "";
+            StringBuilder ans = new StringBuilder();
+            while (true)
+            {
+                try
+                {
+                    var curchar = strs[0][curpos];
+                    for (int i = 0; i < l; i++)
+                    {
+                        if (strs[i][curpos] != curchar)
+                        {
+                            res = ans.ToString();
+                            return res;
+                        };
+                    }
+                    ans.Append(curchar);
+                    curpos++;
+                }
+                catch { break; }
+            }
+            res = ans.ToString();
+            return res;
+        }
+
+
+## 学习到的知识和思路
