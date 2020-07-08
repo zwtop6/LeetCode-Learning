@@ -78,9 +78,12 @@
 ```
 
 ## 学习他人的思路
+
 直接把所有的字符串比较，用try来避免数组超出索引范围
 
 ## 代码
+
+```C#
         public string LongestCommonPrefix2(string[] strs)
         {
             int curpos = 0;
@@ -109,6 +112,62 @@
             res = ans.ToString();
             return res;
         }
-
+```
 
 ## 学习到的知识和思路
+
+- StringBuilder操作字符串
+
+  1. append：连接
+  2. setCharAt(int i, char c)：将第 i 个代码单元设置为 c（可以理解为替换）
+  3. insert(int offset, String str)：在指定位置之前插入字符(串)
+  4. delete(int startIndex,int endIndex)：删除起始位置（含）到结尾位置（不含）之间的字符串
+
+- 字符串数组可以用str[][]的形式来选择到每个char
+
+- 用try{}catch{}来代替一些边界判断，简单、安全、可靠，Great！
+
+## 改进自己的代码
+
+```C#
+        private string LongestCommonPrefix(string[] strs)
+        {
+            string tmpStr;
+
+            if (strs.Length == 0) return "";
+            tmpStr = strs[0];
+
+            foreach (var item in strs)
+            {
+                tmpStr = CommomPrefixTwo(tmpStr, item);
+                if (tmpStr == "") return "";
+            }
+
+            return tmpStr;
+        }
+
+        private string CommomPrefixTwo(string str1, string str2)
+        {
+            StringBuilder tmpStr = new StringBuilder();
+            int i = 0;
+
+            while (true)
+            {
+                try
+                {
+                    if (str1[i] == str2[i])
+                    {
+                        tmpStr.Append(str1[i]);
+                        i++;
+                    }
+                    else
+                    {
+                        return tmpStr.ToString();
+                    }
+                }
+                catch { break; }
+            }
+
+            return tmpStr.ToString();
+        }
+```
