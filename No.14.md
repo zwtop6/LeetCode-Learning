@@ -148,12 +148,12 @@
 
         private string CommomPrefixTwo(string str1, string str2)
         {
-            StringBuilder tmpStr = new StringBuilder();
+            StringBuilder tmpStr = new StringBuilder();         //利用StringBuilder来操作字符串
             int i = 0;
 
             while (true)
             {
-                try
+                try                                             //用try来规避错误
                 {
                     if (str1[i] == str2[i])
                     {
