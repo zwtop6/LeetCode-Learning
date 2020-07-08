@@ -83,6 +83,8 @@
 
 ## 代码
 
+- 语言支持：C#
+
 ```C#
         public string LongestCommonPrefix2(string[] strs)
         {
@@ -128,6 +130,8 @@
 - 用try{}catch{}来代替一些边界判断，简单、安全、可靠，Great！
 
 ## 改进自己的代码
+
+- 语言支持：C#
 
 ```C#
         private string LongestCommonPrefix(string[] strs)
