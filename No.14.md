@@ -118,10 +118,10 @@
 
 - StringBuilder操作字符串
 
--- append：连接
--- setCharAt(int i, char c)：将第 i 个代码单元设置为 c（可以理解为替换）
--- insert(int offset, String str)：在指定位置之前插入字符(串)
--- delete(int startIndex,int endIndex)：删除起始位置（含）到结尾位置（不含）之间的字符串
+    1. append：连接
+    1. setCharAt(int i, char c)：将第 i 个代码单元设置为 c（可以理解为替换）
+    1. insert(int offset, String str)：在指定位置之前插入字符(串)
+    1. delete(int startIndex,int endIndex)：删除起始位置（含）到结尾位置（不含）之间的字符串
 
 - 字符串数组可以用str[][]的形式来选择到每个char
 
