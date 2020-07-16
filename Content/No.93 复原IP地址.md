@@ -77,3 +77,54 @@
 
 通过人为引入一些判断条件，从而减少穷举次数
 
+
+## DFS方法
+
+深度优先遍历，用栈来记录还原现场，不断回溯，直至遍历完所有情况。
+
+## 代码
+
+- 语言支持：C#
+
+```C#
+        private IList<string> RestoreIpAddresses2(string s)
+        {
+            IList<string> tmpList = new List<string>();
+            Stack<string> ip = new Stack<string>();
+
+            if (s.Length < 4 || s.Length > 12) return tmpList;
+
+            RestoreIPByDFS(s, 1, 0, ip, tmpList);
+
+            return tmpList;
+        }
+
+        private void RestoreIPByDFS(string s, int floor, int nums, Stack<string> ip, IList<string> result)
+        {
+            //满足条件
+            if (floor == 5 || nums == s.Length)
+            {
+                if (floor == 5 && nums == s.Length)
+                {
+                    result.Add(string.Join(".", ip.Reverse()));
+                }
+                return;
+            }
+
+            //候选人
+            for (int i = 1; i < 4; i++)
+            {
+                //超过总长时则返回
+                if (nums + i > s.Length) return;
+
+                string str = s.Substring(nums, i);
+
+                if (Convert.ToInt32(str) < 256 && (str == "0" || !str.StartsWith("0")))
+                {
+                    ip.Push(str);
+                    RestoreIPByDFS(s, floor + 1, nums + i, ip, result);
+                    ip.Pop();
+                }
+            }
+        }
+```
