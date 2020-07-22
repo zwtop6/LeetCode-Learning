@@ -142,4 +142,74 @@ N 在[1,200]的范围内。
 
 - 并查集
 
-学习中...
+## 代码
+
+- 语言支持：C#
+
+```
+private int FindCircleNum4(int[][] M)
+        {
+            int result = M.Length;
+
+            int[] tag = new int[M.Length];
+
+            for (int i = 0; i < tag.Length; i++)
+            {
+                tag[i] = i;
+            }
+
+            for (int i = 0; i < M.Length; i++)
+            {
+                for (int j = i; j < M[0].Length; j++)
+                {
+                    if (M[i][j] == 1)
+                    {
+                        result = Union(tag, i, j, result);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private int Union(int[] M, int x, int y, int count)
+        {
+            int rootX = FindRoot(M, x);
+            int rootY = FindRoot(M, y);
+
+            if (rootX != rootY)
+            {
+                M[rootX] = M[rootY];
+                count--;
+            }
+
+            return count;
+        }
+
+        private int FindRoot(int[] M, int x)
+        {
+            while (M[x] != x)
+            {
+                M[x] = M[M[x]];
+                x = M[x];
+            }
+
+            return x;
+        }
+```
+
+## 所学、所悟
+
+我自己用数组维护的思路，有一些并查集的味道
+
+主要相同点
+
+  1. 再遍历的过程中随着情况的改变而不断的修正维护的数组，不断的把相同的放在一起
+
+不同点/可优化
+
+  1. 我的没有在遍历过程中去记录实时的总集数，导致要在最后查询一边来得到最终集合数    
+  1. 我的数组只是记录自己在哪个集合中，没有父节点的记录，导致了当有不同两个集合需要合并时，就得遍历一次数组
+
+并查集里的压缩路径，要视情况是否使用，如果需要数据之间的父子关系，则不压缩，但是数据量很大的话，不压缩导致查找两个是否  
+属于同一集合会很耗时，那么实际情况可能要维护两个数组来对应不同的情况使用，用空间换时间在大部分时候都是划算的。
