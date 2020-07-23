@@ -138,6 +138,79 @@ N 在[1,200]的范围内。
         }
 ```
 
+- 语言支持：C#
+- DFS
+
+```C#
+        private int FindCircleNum2(int[][] M)
+        {
+            int result = 0;
+            int[] tag = new int[M.Length];
+
+            for (int i = 0; i < M.Length; i++)
+            {
+                if (tag[i] == 0)
+                {
+                    tag[i] = 1;
+                    FindCircleNumDFS(M, tag, i);
+                    result++;
+                }
+            }
+
+            return result;
+        }
+
+        private void FindCircleNumDFS(int[][] M, int[] tag, int i)
+        {
+            //不能从i+1开始找，因为比如0和3是朋友，找3的朋友时可能会漏掉1和2
+            for (int j = 0; j < M.Length; j++)
+            {
+                if (M[i][j] == 1 && tag[j] == 0)
+                {
+                    tag[j] = 1;
+                    FindCircleNumDFS(M, tag, j);
+                }
+            }
+        }
+```
+
+- 语言支持：C#
+- BFS
+
+```C#
+        private int FindCircleNum3(int[][] M)
+        {
+            int result = 0;
+            int[] tag = new int[M.Length];
+            Queue<int> queue = new Queue<int>();
+
+            for (int i = 0; i < M.Length; i++)
+            {
+                if (tag[i] == 0)
+                {
+                    tag[i] = 1;
+                    queue.Enqueue(i);
+
+                    while (queue.Count != 0)
+                    {
+                        int x = queue.Dequeue();
+
+                        for (int j = 0; j < M.Length; j++)
+                        {
+                            if (M[x][j] == 1 && tag[j] == 0)
+                            {
+                                tag[j] = 1;
+                                queue.Enqueue(j);
+                            }
+                        }
+                    }
+                    result++;
+                }
+            }
+            return result;
+        }
+```
+
 ## 学习他人的思路
 
 - 并查集
