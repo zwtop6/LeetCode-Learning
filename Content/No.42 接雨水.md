@@ -15,7 +15,7 @@
 
 找到所有起作用的边界位置，然后计算这些位置中的存水量
 
-找边界位置的思路是：先找到所有大值（左右两边的数都小于等于该数），然后在不断去掉其中的小值（左右两边的数都大于等于该数）
+先找到所有大值（左右两边的数都小于等于该数），然后在不断去掉其中的小值（左右两边的数都大于等于该数）
 
 ## 代码
 
@@ -81,7 +81,85 @@
 
 ## 学习他人的思路
 
-- 双指针、栈
+- 按行找
 
-学习中.....
+每行的存水量是由该行左边最大值和右边最大值决定的，所以遍历每行，找到该行左右两边的最值可求
 
+找最值可以通过记录的方式来减少遍历次数
+
+- 从结果数组倒推
+
+当接满雨水后，数组变得更加规律
+
+在某一个最大值的左边不严格单调递增，右边不严格单调递减
+
+因为有一个最大值，所以左边的边界高度是由该数左边的值决定，右边同理
+
+那么只需要从左向右遍历到最大值，把数组补成不严格单调增，右边同理
+
+时间复杂度是遍历了两遍数组O(N),空间复杂度为几个变量O(1)
+
+- 单调栈
+
+勉强理解了，但是没有消化掉
+
+再碰到运用单调栈的题回过头来一起看
+
+## 代码
+
+- 语言支持：C#
+- 思路：从结果数组倒推
+
+```
+private int Trap2(int[] height)
+        {
+            int result = 0;
+            int max = 0;
+            int maxIndex = 0;
+
+            if (height.Length == 0) return 0;
+
+            //找最大值的index
+            for (int i = 1; i < height.Length; i++)
+            {
+                if (height[i] > max)
+                {
+                    max = height[i];
+                    maxIndex = i;
+                }
+            }
+
+            int curMax = height[0];
+
+            //从左往右找到最大值处
+            for (int i = 1; i < maxIndex; i++)
+            {
+                if (height[i] < curMax)
+                {
+                    result += curMax - height[i];
+                }
+                else
+                {
+                    curMax = height[i];
+                }
+            }
+
+            curMax = height[height.Length - 1];
+            //从右往左找到最大值处
+            for (int i = height.Length - 2; i > maxIndex; i--)
+            {
+                if (height[i] < curMax)
+                {
+                    result += curMax - height[i];
+                }
+                else
+                {
+                    curMax = height[i];
+                }
+            }
+
+            return result;
+        }
+```        
+
+## 所学、所悟
