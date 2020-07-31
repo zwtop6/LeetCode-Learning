@@ -35,7 +35,7 @@ p、q 为不同节点且均存在于给定的二叉树中。
 
 利用DFS可以得到两节点的所有父节点栈，然后比较两个栈中的元素，找到相同的
 
-因为时共同祖先，所以数量少的栈里一定有祖先，所以数量多的栈相对于少的栈多出来的部分则一定没有祖先，直接移除
+因为是共同祖先，所以数量少的栈里一定有祖先，所以数量多的栈相对于少的栈多出来的部分则一定没有祖先，直接移除
 
 移除后两个栈数量相等，按序比较即可
 
@@ -44,7 +44,7 @@ p、q 为不同节点且均存在于给定的二叉树中。
 - 语言支持：C#
 
 ```C#
-public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
+        public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
         {
             Stack<TreeNode> stackP = new Stack<TreeNode>();
             Stack<TreeNode> stackQ = new Stack<TreeNode>();
