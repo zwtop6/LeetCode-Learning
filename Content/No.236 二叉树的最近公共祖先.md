@@ -6,7 +6,7 @@
 
 例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4]
 
-![image.png]()
+![binarytree.png](https://github.com/zwtop6/LeetCode-Learning/blob/master/Images/binarytree.png)
 
 示例 1:
 ```
