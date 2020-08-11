@@ -8,6 +8,7 @@ LeetCode 刷题，记录思路，学习进展
 - [No.3 无重复字符的最长子串](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.3%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2.md)  
 - [No.14 最长公共前缀](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.14%20%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80.md)
 - [No.15 三数之和](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.15%20%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C.md)  
+- [No.26 删除排序数组中的重复项](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.26%20%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9.md)
 - [No.33 搜索旋转排序数组](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/NO.33%20%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84.md)  
 - [No.35 搜索插入位置](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.35%20%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE.md)  
 - [No.42 接雨水](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.42%20%E6%8E%A5%E9%9B%A8%E6%B0%B4.md)
