@@ -91,7 +91,6 @@
 - 语言支持：C#
 
 ```C#
-```
         public ListNode OddEvenList(ListNode head)
         {
             if (head == null || head.next == null) return head;
