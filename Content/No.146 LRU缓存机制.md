@@ -31,6 +31,29 @@ cache.get(4);       // 返回  4
 
 ## 我的开始思路
 
+要求时间复杂度为O(1)，首先想到了Hashmap，直接把key和value放入其中
+
+然后这道题还有另外两个要求，一个是容量上限，一个是最近最少使用
+
+容量上限记录并判断一下即可，那么难点就在于最近最少使用
+
+一开始想到了队列，用了就放进去，最开头的是很久没用的了
+
+但是，当get时无法O(1)把中间的取数来，而且也不符合队列的使用
+
+于是想到要方便取出和插入，那么就用list列表
+
+问题也在于没办法通过key来直接O(1)取到，那么想O(1)，就得Hashmap
+
+那么再维护一个Hashmap来记录key和list的item
+
+感觉可以了，写好代码后提交发现不行，跟踪代码，发现当移动list时其余的位置全部发生了变化
+
+那么就得再全部维护一遍Hashmap中的value，又变成了O(N)
+
+于是不知道该怎么办了
+
+学习了一下别人的思路，按照思路实现
 
 ## 代码
 
@@ -165,13 +188,89 @@ cache.get(4);       // 返回  4
 
 ## 学习他人的思路
 
+再仔细比较自己的代码和官方的，发现自己的很不优雅
+
+不优雅的原因主要是因为其中条件和边界的判断，造成代码可读性变差
+
+利用fakeHade和fakeTail的思路来再次优化自己的代码
+
 ## 代码
 
 - 语言支持：C#
 
 ```
+        public class LRUCache1
+        {
+            int MaxCapacity = 0;
+            Dictionary<int, ListTwoNode> dict = new Dictionary<int, ListTwoNode>();
 
+            ListTwoNode fakeHead = new ListTwoNode();
+            ListTwoNode fakeTail = new ListTwoNode();
+
+            public LRUCache1(int capacity)
+            {
+                MaxCapacity = capacity;
+                fakeHead.next = fakeTail;
+                fakeTail.pre = fakeHead;
+            }
+
+            public int Get(int key)
+            {
+                if (dict.ContainsKey(key))
+                {
+                    RemoveNode(dict[key]);
+                    AddToTail(dict[key]);
+                    return dict[key].value;
+                }
+
+                return -1;
+            }
+
+            public void Put(int key, int value)
+            {
+                if (dict.ContainsKey(key))
+                {
+                    RemoveNode(dict[key]);
+                    dict[key] = new ListTwoNode(key, value);
+                    AddToTail(dict[key]);
+                }
+                else
+                {
+                    if (dict.Count == MaxCapacity)
+                    {
+                        dict.Remove(fakeHead.next.key);
+                        RemoveNode(fakeHead.next);
+                    }
+
+                    dict.Add(key, new ListTwoNode(key, value));
+                    AddToTail(dict[key]);
+                }
+            }
+
+            private void AddToTail(ListTwoNode node)
+            {
+                node.pre = fakeTail.pre;
+                node.next = fakeTail;
+                node.pre.next = node;
+                node.next.pre = node;
+            }
+
+            private void RemoveNode(ListTwoNode node)
+            {
+                node.pre.next = node.next;
+                node.next.pre = node.pre;
+                node.next = null;
+                node.pre = null;
+            }
+        }
 ```       
 
 ## 所学、所悟
 
+这样就优雅很多了
+
+主要学习到两点：
+
+1. 当操作链表时，巧用fakeHead来除去边界条件的判断
+
+1. 用Hashmap和双向链表来达到最近最少使用的记录
