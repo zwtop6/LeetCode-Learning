@@ -33,7 +33,3 @@ LeetCode 刷题，记录思路，学习进展
 - [No.0951 翻转等价二叉树](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.951%20%E7%BF%BB%E8%BD%AC%E7%AD%89%E4%BB%B7%E4%BA%8C%E5%8F%89%E6%A0%91.md)
 - [No.1008 先序遍历构造二叉树](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.1008%20%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91.md)
 
-
-# 周赛
-- [第202场](https://github.com/zwtop6/LeetCode-Learning/blob/master/WeeklyContest/No202.md)  
-- [第203场](https://github.com/zwtop6/LeetCode-Learning/blob/master/WeeklyContest/No203.md)  
