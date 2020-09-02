@@ -27,16 +27,16 @@
 ```C#
         public ListNode ReverseList1(ListNode head)
         {
-            //当head为null或者只有一个next时直接返回本事即可
             if (head == null || head.next == null) return head;
-
-            ListNode listNode = head;
+            
+            ListNode listNode = head.next;
             ListNode preResult;
+
             ListNode result;
 
+            head.next = null;
             result = head;
-            result.next = null;
-            preResult = result;
+            preResult = head;
 
             while (listNode.next != null)
             {
