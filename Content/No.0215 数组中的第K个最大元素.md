@@ -170,9 +170,70 @@
 - 堆排序
 
 ```C#
+    public int FindKthLargest(int[] nums, int k) 
+    {
+        
+        BuildMaxHeap(nums);
 
+        for (int i=1;i<=k;i++)
+        {
+            DeleteMaxHeapPeak(nums,nums.Length-i);
+        }
+
+        return nums[nums.Length-k];
+    }
+
+    //创建堆顺序
+    private void BuildMaxHeap(int[] nums)
+    {
+        //如果数组长度≤1，无须操作
+        if (nums.Length<=1) return;
+
+        int mid=nums.Length/2;
+
+        for (int i=mid;i>=0;i--)
+        {
+            AdjustMaxHeap(nums,i,nums.Length-1);
+        }
+    }
+
+    //删除大顶堆顶部(移到最后)
+    private void DeleteMaxHeapPeak(int[] nums,int heapSize)
+    {
+        Swap(nums,0,heapSize);
+
+        AdjustMaxHeap(nums,0,heapSize-1);
+    }
+
+    //调整部分堆
+    private void AdjustMaxHeap(int[] nums, int cur, int heapSize)
+    {
+        int left=cur*2+1;
+        int right=cur*2+2;
+        int max=cur;
+
+        if (right<=heapSize && nums[right]>nums[max])
+        {
+            max=right;
+        }
+
+        if (left<=heapSize && nums[left]>nums[max])
+        {
+            max=left;
+        }
+
+        if (max!=cur)
+        {
+            Swap(nums,cur,max);
+            AdjustMaxHeap(nums,max,heapSize);
+        }
+    }
+
+    private void Swap(int[] nums, int i, int j)
+    {
+        int tmp=nums[i];
+
+        nums[i]=nums[j];
+        nums[j]=tmp;
+    }
 ```
-
-## 所学、所悟
-
-## 扩展
