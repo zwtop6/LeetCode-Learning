@@ -34,5 +34,6 @@ LeetCode 刷题，记录思路，学习进展
 - [No.0560 和为K的子数组](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.560%20%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84.md)  
 - [No.0695 岛屿的最大面积](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/NO.695%20%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF.md)  
 - [No.0951 翻转等价二叉树](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.951%20%E7%BF%BB%E8%BD%AC%E7%AD%89%E4%BB%B7%E4%BA%8C%E5%8F%89%E6%A0%91.md)
+- [No.0973 最接近原点的 K 个点](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.0973%20%E6%9C%80%E6%8E%A5%E8%BF%91%E5%8E%9F%E7%82%B9%E7%9A%84K%E4%B8%AA%E7%82%B9.md)
 - [No.1008 先序遍历构造二叉树](https://github.com/zwtop6/LeetCode-Learning/blob/master/Content/No.1008%20%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91.md)
 
